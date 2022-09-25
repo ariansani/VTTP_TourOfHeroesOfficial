@@ -4,11 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes.component';
+import { HeroDetailComponent } from './components/hero-detail.component';
+import { HeroService } from './services/hero.service';
+import { MessagesComponent } from './components/messages.component';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +22,7 @@ import { HeroesComponent } from './components/heroes.component';
     ReactiveFormsModule,
     
   ],
-  providers: [],
+  providers: [HeroService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
