@@ -10,6 +10,10 @@ import { MessagesComponent } from './components/messages.component';
 import { MessageService } from './services/message.service';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data.service';
+import { HeroSearchComponent } from './components/hero-search.component';
 
   const routes:Routes = 
     [
@@ -25,15 +29,20 @@ import { DashboardComponent } from './components/dashboard.component';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+InMemoryDataService, {dataEncapsulation:false}
+    ),
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
-  providers: [HeroService,MessageService],
+  providers: [HeroService,MessageService, InMemoryDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
